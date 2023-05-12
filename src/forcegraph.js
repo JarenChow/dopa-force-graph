@@ -154,7 +154,7 @@ let simulation = d3.forceSimulation(nodes)
   .alphaTarget(0.005);
 // 初始化事件相关
 let pointer = null;
-graph.on('pointerdown', (ev) => {
+graph.on('pointerdown', () => {
   locate.pause();
   if (pointer === null) return;
   simulation.alphaTarget(0.1);
@@ -187,7 +187,7 @@ graph.on('pointermove', (ev) => {
       break;
   }
 });
-graph.on('pointerup', (ev) => {
+graph.on('pointerup', () => {
   if (pointer === null) return;
   pointer.fx = pointer.fy = null;
   simulation.alphaTarget(0.005);
@@ -199,7 +199,7 @@ graph.on('wheel', (ev) => {
   smooth.y = ev.y - root.y;
   smooth.start();
 });
-graph.on('dblclick', (ev) => {
+graph.on('dblclick', () => {
   if (pointer === null) return;
   let count = dopa.util.randInt(1, 5), angle = Math.PI * (3 - Math.sqrt(5));
   for (let i = 0; i < count; i++) {
@@ -274,5 +274,6 @@ let smooth = graph.create('animator', {
     group.scaleX = group.scaleY = lerp(this.fromScale, this.toScale, ratio);
     group.x = lerp(this.fromX, this.toX, ratio);
     group.y = lerp(this.fromY, this.toY, ratio);
+    group.updateTransform();
   }
 });
