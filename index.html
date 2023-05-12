@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dopa Force Graph</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<div id="graph" style="width: 100%;height: 100%;"></div>
+<div id="stats" style="position: fixed;left: 0;top: 0;opacity: 0.9;cursor: pointer;"></div>
+<a id="corner" href="https://github.com/JarenChow/dopa-force-graph" style="position: fixed;top: 0;right: 0;"></a>
+
+<script src="https://cdn.jsdelivr.net/npm/dopa"></script>
+<script src="https://cdn.jsdelivr.net/npm/dopa-stats"></script>
+<script src="https://cdn.jsdelivr.net/npm/dopa-corner"></script>
+<script src="static/d3@7.js"></script>
+<script src="static/regular.js"></script>
+<script src="src/forcegraph.js"></script>
+<script>
+  createStats('#stats');
+  createCorner('#corner');
+</script>
+
+</body>
+</html>
