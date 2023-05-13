@@ -245,6 +245,9 @@ let scale = graph.create('animator', {
     root.scaleX = root.scaleY = ratio < 0.5 ?
       1 + (0.125 - 1) * easeInOut(ratio / 0.5) :
       0.125 + (1 - 0.125) * easeInOut((ratio - 0.5) / 0.5);
+  },
+  onfinish() {
+    group.updateTransform();
   }
 });
 let loop = graph.create('animator', {
@@ -274,6 +277,8 @@ let smooth = graph.create('animator', {
     group.scaleX = group.scaleY = lerp(this.fromScale, this.toScale, ratio);
     group.x = lerp(this.fromX, this.toX, ratio);
     group.y = lerp(this.fromY, this.toY, ratio);
+  },
+  onfinish() {
     group.updateTransform();
   }
 });
